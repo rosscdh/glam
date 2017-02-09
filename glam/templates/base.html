@@ -1,0 +1,77 @@
+{% load compress static wagtailuserbar %}
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a responsive product landing page.">
+    <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+    
+    
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
+    <!--<![endif]-->
+    
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="css/layouts/marketing-old-ie.css">
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+            <link rel="stylesheet" href="css/layouts/marketing.css">
+        <!--<![endif]-->
+    {% compress css %}
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'purecss-sass/vendor/assets/stylesheets/_purecss.scss' %}">
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/layouts/marketing.css' %}">
+    {% endcompress %}
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {% wagtailuserbar %}
+
+    <div class="header">
+        <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+            <a class="pure-menu-heading" href="">ColorGlam 0.01</a>
+
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tour</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+
+    {% block splash %}
+    <div class="splash-container">
+        <div class="splash">
+            <h1 class="splash-head">Big Bold Text</h1>
+            <p class="splash-subhead">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p>
+            <p>
+                <a href="http://purecss.io" class="pure-button pure-button-primary">Get Started</a>
+            </p>
+        </div>
+    </div>
+    {% endblock splash %}
+
+    {% block content %}{% endblock %}
+
+{% compress js %}
+{% endcompress %}
+
+{% block extra_js %}{% endblock %}
+
+
+</body>
+</html>
